@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/*
+ Metodo de ordenação
+ Tabela de Young
+ Octavio Augusto da Silva Pereira
+
+*/
+
+void main(){
+    int tam = 0;
+    int i   = 0;
+    int j   = 0;
+    int num = 0;
+
+    printf("Digite um tamanho para a Matriz: ");
+    scanf ("%d", &tam);
+
+    int matriz [tam][tam];
+
+    //Recebe os numeros informados pelo usuario
+    for(i = 0; i < tam; i++){
+        for(j = 0; j < tam; j++){
+            printf("Digite um numero:");
+            scanf("%d", &num);
+            matriz[i][j] = num;
+        }
+    }
+
+    //Exibe a matriz desordenada
+    printf("-MATRIZ DESORDENADA-\n");
+    for(i = 0; i < tam; i++){
+        for(j = 0; j < tam; j++){
+            printf("%02d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n\n ");
+
+    //Exibe a matriz ordenada
+    printf("\n");
+    tabelaYoung(tam, matriz);
+
+    printf("-MATRIZ ORDENADA-\n");
+    for(i = 0; i < tam; i++){
+        for(j = 0; j < tam; j++){
+            printf("%02d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n\n ");
+
+}
+// Função para ordenar a matriz
+void tabelaYoung(int tam, int matriz [tam][tam]){
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    int l = 0;
+
+    for (i = 0; i < tam; i++) {
+        for (j = 0; j < tam; j++) {
+            for (k = 0; k < tam; k++) {
+                for (l = 0; l < tam; l++) {
+
+                    if (matriz[i][j] < matriz[k][l]) {
+                        int aux = matriz[i][j];
+                        matriz[i][j] = matriz[k][l];
+                        matriz[k][l] = aux;
+                    }
+                }
+            }
+        }
+    }
+}
